@@ -20,7 +20,7 @@ bindsym $mod+d exec --no-startup-id rofi -show combi
 bindsym $mod+i exec ip addr show tun0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1 | xclip -sel clip
 
 bindsym $mod+Shift+f exec firefox 
-bindsym $mod+Shift+y yandex-browser
+bindsym $mod+Shift+y exec yandex-browser
 bindsym $mod+Shift+c exec code
 #bindsym $mod+Shift+a exec $HOME/.config/i3/float.sh &
 
