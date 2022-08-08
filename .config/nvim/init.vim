@@ -33,6 +33,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'flazz/vim-colorschemes'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'xolox/vim-misc'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'jose-elias-alvarez/null-ls.nvim'
 call plug#end()
 
 colorscheme material
@@ -138,4 +140,45 @@ for _, lsp in ipairs(servers) do
     }
   }
 end
+
+-- TS setup
+local buf_map = function(bufnr, mode, lhs, rhs, opts)
+    vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
+        silent = true,
+    })
+end
+
+nvim_lsp.tsserver.setup({
+    on_attach = function(client, bufnr)
+        client.resolved_capabilities.document_formatting = false
+        client.resolved_capabilities.document_range_formatting = false
+        local ts_utils = require("nvim-lsp-ts-utils")
+        ts_utils.setup({})
+        ts_utils.setup_client(client)
+        buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
+        buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
+        buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
+        on_attach(client, bufnr)
+    end,
+})
+
+local null_ls = require("null-ls")
+null_ls.setup({
+    sources = {
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.code_actions.eslint,
+        null_ls.builtins.formatting.prettier
+    },
+    on_attach = on_attach
+})
+
+-- Stylelint format after save
+require'lspconfig'.stylelint_lsp.setup{
+  settings = {
+    stylelintplus = {
+      --autoFixOnSave = true,
+      --autoFixOnFormat = true,
+    }
+  }
+}
 
