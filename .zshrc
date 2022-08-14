@@ -1,14 +1,15 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-
+export PATH=$HOME/.local/bin:$PATH
+export EDITOR=nvim
 # Path to your oh-my-zsh installation.
-export ZSH="/home/gg/.oh-my-zsh"
-
+export ZSH="$HOME/.oh-my-zsh"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="bureau"
+ZSH_THEME="rkj-repos"
+#bureau
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -72,7 +73,9 @@ plugins=(git
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	web-search
-	extract)
+	extract
+	command-not-found
+	themes)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -101,6 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+function X { do_x $(tput cols) "" '='; }
+
 alias c="clear"
 alias cat='bat --paging=never'
 alias reboot="sudo reboot"
@@ -110,3 +116,7 @@ alias tun="ip addr show tun0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1 | 
 alias clea="clear"
 alias wgup="wg-quick up wg0"
 alias wgdown="wg-quick down wg0"
+alias tsm="transmission-remote"
+eval "$(mcfly init zsh)"
+export MCFLY_RESULTS=20
+alias s="tput cols | yes = | head -$(tput cols) | tr -d '\n'"
