@@ -2,8 +2,8 @@
 
 function status() {
     if [ $(warp-cli status | grep update | cut -d ' ' -f 3) == 'Connected' ];then
-        echo "CON"
-    else echo "DISCON"
+        echo "WARP: "
+    else echo "WARP: "
     fi
 }
 
