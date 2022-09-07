@@ -75,7 +75,8 @@ plugins=(git
 	web-search
 	extract
 	command-not-found
-	themes)
+	themes
+	docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,8 +110,9 @@ function X { do_x $(tput cols) "" '='; }
 
 alias c="clear"
 alias cat='bat --paging=never'
-alias reboot="sudo reboot"
+#alias reboot="sudo reboot"
 alias copy="xclip -sel clip"
+alias burp="java -javaagent:/home/gg/Downloads/burpsuite_pro_v2022.8/BurpSuiteLoader_v2022.8.jar -noverify -jar /home/gg/Downloads/burpsuite_pro_v2022.8/burpsuite_pro_v2022.8.jar"
 alias tun="ip addr show tun0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1 | xclip -sel clip"
 alias clea="clear"
 alias wgup="wg-quick up wg0"
@@ -119,3 +121,4 @@ alias tsm="transmission-remote"
 eval "$(mcfly init zsh)"
 export MCFLY_RESULTS=20
 alias s="tput cols | yes = | head -$(tput cols) | tr -d '\n'"
+alias ccat="/usr/bin/cat"
