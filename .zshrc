@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.local/bin:/var/lib/snapd/snap/bin:$PATH
 export EDITOR=nvim
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -122,3 +122,4 @@ eval "$(mcfly init zsh)"
 export MCFLY_RESULTS=20
 alias s="tput cols | yes = | head -$(tput cols) | tr -d '\n'"
 alias ccat="/usr/bin/cat"
+alias q="exit"
