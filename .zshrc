@@ -70,13 +70,16 @@ ZSH_THEME="rkj-repos"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git
+	sudo
+	catimg
 	zsh-autosuggestions
 	zsh-syntax-highlighting
 	web-search
 	extract
 	command-not-found
 	themes
-	docker)
+	docker
+	aliases)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -109,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 function X { do_x $(tput cols) "" '='; }
 
 alias c="clear"
-alias cat='bat --paging=never'
+alias cat='bat --paging=never --theme=TwoDark'
 #alias reboot="sudo reboot"
 alias copy="xclip -sel clip"
 alias burp="java -javaagent:/home/gg/Downloads/burpsuite_pro_v2022.8/BurpSuiteLoader_v2022.8.jar -noverify -jar /home/gg/Downloads/burpsuite_pro_v2022.8/burpsuite_pro_v2022.8.jar"
