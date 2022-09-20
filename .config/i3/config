@@ -20,6 +20,10 @@ bindsym $mod+d exec --no-startup-id rofi -show combi
 # bindsym $mod+Shift+Ctrl+s exec --no-startup-id rofi-screenshot -s
 bindsym $mod+i exec ip addr show tun0 | grep "inet\b" | awk '{print $2}' | cut -d/ -f1 | xclip -sel clip
 
+#Screenshot
+bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+bindsym $mod+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(date)"
+
 bindsym $mod+Shift+f exec firefox 
 bindsym $mod+Shift+y exec yandex-browser
 bindsym $mod+Shift+c exec code
